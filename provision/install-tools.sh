@@ -2,8 +2,6 @@
 
 set -e
 
-source /vagrant/versions.sh
-
 echo "#### updating apt"
 apt-get -y update
 

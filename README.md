@@ -89,3 +89,9 @@ Make sure that your keys defined by `IdentityFile` only have your username with 
 ## Delete VM
 
 `vagrant destroy`
+
+## Update VM
+
+> This shouldn't be necessary `vagrant up` should run this automatically. However, this can be used to update the VM or blow away the VM and "re-up".
+
+`vagrant provision`

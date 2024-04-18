@@ -2,8 +2,6 @@
 
 set -e
 
-source /vagrant/versions.sh
-
 sudo apt update -y
 
 sudo apt install -y \
