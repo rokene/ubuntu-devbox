@@ -1,10 +1,8 @@
-# Vagrant Setup
-
-> In order for vagrant to be able to reconfigure disk space easily install the following plugin: `vagrant plugin install vagrant-disksize`
+# Ubuntu LTS Vagrant DevBox
 
 Ubuntu Latest LTS: 22.04
 
-Following tools will be installed:
+Following tools will be installed into the Vagrant VM:
 - git
 - git-completion
 - jq
@@ -17,24 +15,39 @@ Following tools will be installed:
 - nvm
 - node lts
 
-## Pre-Requisites
+# Pre-Requisites
 
 - WSL2 (optional)
 - VirtualBox
+- Vagrant
 
-## Usage
+## Install VirtualBox
 
-> Older vagrant does not support accepting alternate vagrantfile locations.
+> Disable Hyper-V in Powershell w/ Admin Win10: `Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All`
 
-In order to use vagrant, move to the vagrant directory.
+> Disable Hyper-V in Powershell w/ Admin Win11: `bcdedit /set hypervisorlaunchtype off`
 
-`cd ./tools/vagrant`
+Install latest VirtualBox & VirtualBox Extensions @ https://www.virtualbox.org/wiki/Downloads
+
+## Install Vagrant
+
+Install latest Vagrant @ https://developer.hashicorp.com/vagrant/downloads
+
+### Install Vagrant Plugins
+
+Install this plugin to easily manage disk resizing with Vagrant.
+
+`vagrant plugin install vagrant-disksize`
+
+# Usage
 
 Stand up vagrant box.
 
 `vagrant up`
 
-Get ssh-config for use with vscode. For more information: https://code.visualstudio.com/docs/remote/ssh
+> For more information: https://code.visualstudio.com/docs/remote/ssh
+
+Retrieve the ssh configuration for this VM.
 
 `vagrant ssh-config`
 
@@ -45,9 +58,3 @@ Shutdown vagrant box.
 Delete vagrant box.
 
 `vagrant destroy`
-
-### Install Plugins
-
-To install the vagrant disk management:
-
-`vagrant plugin install vagrant-disksize`
