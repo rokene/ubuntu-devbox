@@ -12,7 +12,7 @@ apt-get install -y ca-certificates curl gnupg
 install -m 0755 -d /etc/apt/keyrings
 
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-  | gpg --dearmor -o /etc/apt/keyrings/google-cloud.gpg
+  | gpg --dearmor --batch --yes --no-tty -o /etc/apt/keyrings/google-cloud.gpg
 
 chmod go+r /etc/apt/keyrings/google-cloud.gpg
 

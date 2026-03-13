@@ -37,6 +37,40 @@ apt-get install -y \
   dnsutils \
   net-tools
 
+# To support mermaid cli and puppeter; headless browser deps
+sudo apt-get install -y \
+  libgbm1 \
+  libasound2t64 || sudo apt-get install -y libasound2 \
+  libatk-bridge2.0-0 \
+  libatk1.0-0 \
+  libc6 \
+  libcairo2 \
+  libcups2 \
+  libdbus-1-3 \
+  libexpat1 \
+  libfontconfig1 \
+  libgcc-s1 \
+  libglib2.0-0 \
+  libgtk-3-0 \
+  libnspr4 \
+  libnss3 \
+  libpango-1.0-0 \
+  libpangocairo-1.0-0 \
+  libstdc++6 \
+  libx11-6 \
+  libx11-xcb1 \
+  libxcb1 \
+  libxcomposite1 \
+  libxcursor1 \
+  libxdamage1 \
+  libxext6 \
+  libxfixes3 \
+  libxi6 \
+  libxrandr2 \
+  libxrender1 \
+  libxss1 \
+  libxtst6
+
 echo "#### enabling bash completion"
 grep -qxF 'source /usr/share/bash-completion/bash_completion' /home/vagrant/.bashrc || \
   echo 'source /usr/share/bash-completion/bash_completion' >> /home/vagrant/.bashrc

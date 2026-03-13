@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -euxo pipefail
+set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -12,12 +11,13 @@ apt-get install -y ca-certificates curl gnupg lsb-release apt-transport-https
 install -m 0755 -d /etc/apt/keyrings
 
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \
-  | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
+  | gpg --dearmor --batch --yes -o /etc/apt/keyrings/microsoft.gpg
 
-chmod go+r /etc/apt/keyrings/microsoft.gpg
+chmod a+r /etc/apt/keyrings/microsoft.gpg
 
 AZ_DIST="$(lsb_release -cs)"
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ ${AZ_DIST} main" \
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ ${AZ_DIST} main" \
   > /etc/apt/sources.list.d/azure-cli.list
 
 apt-get update
