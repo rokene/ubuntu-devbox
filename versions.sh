@@ -8,3 +8,6 @@ export HELM_VERSION="v3.14.4"
 
 export NVM_VERSION="v0.39.7"
 export NODE_VERSION="22"
+
+export JAVA_VERSION="21"
+export GRADLE_VERSION="9.4.0"

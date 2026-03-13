@@ -19,8 +19,9 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "tools", type: "shell", path: "provision/install-tools.sh"
     config.vm.provision "docker", type: "shell", path: "provision/install-docker.sh"
-    config.vm.provision "k8s-tools", type: "shell", path: "provision/install-k8s-tools.sh"
+    config.vm.provision "k8s", type: "shell", path: "provision/install-k8s-tools.sh"
     config.vm.provision "node", type: "shell", path: "provision/install-node.sh"
+    config.vm.provision "java", type: "shell", path: "provision/install-java.sh"
     config.vm.provision "shell", inline: <<-SHELL
       # Enable strict shell behavior:
       # -e  exit immediately if a command fails
