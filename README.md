@@ -1,7 +1,5 @@
 # Ubuntu LTS Vagrant DevBox
 
-Ubuntu Latest LTS: 22.04
-
 Following tools will be installed into the Vagrant VM:
 - git
 - git-completion
@@ -15,15 +13,15 @@ Following tools will be installed into the Vagrant VM:
 - nvm
 - node lts
 
-<!-- note: separate windows vs linux setup -->
-
 # Pre-Requisites
 
 - WSL2 (optional)
 - VirtualBox
 - Vagrant
 
-## Install VirtualBox
+## Windows
+
+### Install VirtualBox
 
 > Disable Hyper-V in Powershell w/ Admin Win10: `Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All`
 
@@ -31,11 +29,11 @@ Following tools will be installed into the Vagrant VM:
 
 Install latest VirtualBox & VirtualBox Extensions @ https://www.virtualbox.org/wiki/Downloads
 
-## Install Vagrant
+### Install Vagrant
 
 Install latest Vagrant @ https://developer.hashicorp.com/vagrant/downloads
 
-### Install Vagrant Plugins
+#### Install Vagrant Plugins
 
 Install this plugin to easily manage disk resizing with Vagrant.
 
@@ -50,13 +48,17 @@ provision/files/id_rsa
 provision/files/id_rsa.pub
 ```
 
-## Configure SSh Config
+## Configure SSH Config
 
 > For more information: https://code.visualstudio.com/docs/remote/ssh
+> Place the configuration into `.ssh/config`.
+> Make sure that your keys defined by `IdentityFile` only have your username with full control on windows.
+
+Obtain the ssh configuration like example below.
 
 ```powershell
 > vagrant ssh-config
-
+...
 Host ubuntu-devbox-lts
     HostName 127.0.0.1
     User vagrant
@@ -72,26 +74,22 @@ Host ubuntu-devbox-lts
     HostKeyAlgorithms +ssh-rsa
 ```
 
-Place everything under `Host` into your ssh-config found in your `<windows home>\.ssh`.
-
-Make sure that your keys defined by `IdentityFile` only have your username with full control on windows.
-
 # Usage
 
-## Start VM
+Start: `make ubuntu-dev-lts-start`
 
-`vagrant up`
+Stop: `make ubuntu-dev-lts-stop`
 
-## Shutdown VM
+Delete: `make ubuntu-dev-lts-destroy`
 
-`vagrant halt`
+Update: `make ubuntu-dev-lts-update`
 
-## Delete VM
+Reload: `make ubuntu-dev-lts-reload`
 
-`vagrant destroy`
+Status: `make ubuntu-dev-lts-status`
 
-## Update VM
+SSH: `make ubuntu-dev-lts-ssh`
 
 > This shouldn't be necessary `vagrant up` should run this automatically. However, this can be used to update the VM or blow away the VM and "re-up".
 
-`vagrant provision`
+Provision: `make ubuntu-dev-lts-provision`

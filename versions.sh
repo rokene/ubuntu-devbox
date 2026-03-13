@@ -1,1 +1,10 @@
-# Versions for provisioning. Update as required.
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+export KIND_VERSION="v0.22.0"
+export KUBECTL_VERSION="v1.32.2"
+export HELM_VERSION="v3.14.4"
+
+export NVM_VERSION="v0.39.7"
+export NODE_VERSION="22"

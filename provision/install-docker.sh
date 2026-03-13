@@ -1,25 +1,47 @@
 #!/usr/bin/env bash
 
-set -e
+set -euxo pipefail
 
-sudo apt update -y
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-sudo apt install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
+source /vagrant/versions.sh
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+export DEBIAN_FRONTEND=noninteractive
 
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
 
-sudo apt update -y
+apt-get install -y \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release \
+  software-properties-common
+
+install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+  | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+  > /etc/apt/sources.list.d/docker.list
+
+apt-get update
+
+apt-get install -y \
+  docker-ce \
+  docker-ce-cli \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-compose-plugin
 
 apt-cache policy docker-ce
 
-sudo apt install -y docker-ce
+systemctl enable --now docker
+systemctl is-active --quiet docker
 
-apt install -y docker-compose
-
-sudo systemctl status docker
+docker --version
+docker compose version

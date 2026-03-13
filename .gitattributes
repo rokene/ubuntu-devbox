@@ -1,0 +1,11 @@
+# Shell scripts must stay LF everywhere
+*.sh text eol=lf
+
+# These should be LF in the repo, CRLF in Windows working copies
+Vagrantfile text eol=crlf
+Makefile text eol=crlf
+
+# Windows-native scripts
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
