@@ -11,3 +11,7 @@ export NODE_VERSION="22"
 
 export JAVA_VERSION="21"
 export GRADLE_VERSION="9.4.0"
+
+export CLAUDE_CODE_VERSION="latest"
+
+export GO_VERSION="1.25.1"

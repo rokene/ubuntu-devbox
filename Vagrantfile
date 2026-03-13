@@ -22,6 +22,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision "k8s", type: "shell", path: "provision/install-k8s-tools.sh"
     config.vm.provision "node", type: "shell", path: "provision/install-node.sh"
     config.vm.provision "java", type: "shell", path: "provision/install-java.sh"
+    config.vm.provision "go", type: "shell", path: "provision/install-go.sh"
+    config.vm.provision "claude-code", type: "shell", path: "provision/install-claude-code.sh"
     config.vm.provision "shell", inline: <<-SHELL
       # Enable strict shell behavior:
       # -e  exit immediately if a command fails
