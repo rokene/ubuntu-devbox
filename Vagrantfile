@@ -24,6 +24,10 @@ Vagrant.configure("2") do |config|
     config.vm.provision "java", type: "shell", path: "provision/install-java.sh"
     config.vm.provision "go", type: "shell", path: "provision/install-go.sh"
     config.vm.provision "claude-code", type: "shell", path: "provision/install-claude-code.sh"
+    config.vm.provision "terraform", type: "shell", path: "provision/install-terraform.sh"
+    config.vm.provision "azure-cli", type: "shell", path: "provision/install-azure-cli.sh"
+    config.vm.provision "aws-cli", type: "shell", path: "provision/install-aws-cli.sh"
+    config.vm.provision "gcloud-cli", type: "shell", path: "provision/install-gcloud-cli.sh"
     config.vm.provision "shell", inline: <<-SHELL
       # Enable strict shell behavior:
       # -e  exit immediately if a command fails
