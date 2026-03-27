@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision "azure-cli", type: "shell", path: "provision/install-azure-cli.sh"
     config.vm.provision "aws-cli", type: "shell", path: "provision/install-aws-cli.sh"
     config.vm.provision "gcloud-cli", type: "shell", path: "provision/install-gcloud-cli.sh"
+    config.vm.provision "vault-cli", type: "shell", path: "provision/install-vault-cli.sh"
     config.vm.provision "shell", inline: <<-SHELL
       # Enable strict shell behavior:
       # -e  exit immediately if a command fails

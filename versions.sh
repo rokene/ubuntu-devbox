@@ -18,3 +18,5 @@ export GO_VERSION="1.25.1"
 
 export TERRAFORM_VERSION="1.14.7"
 export AWSCLI_VERSION="latest"
+
+export VAULT_CLI_VERSION="1.18.2"
